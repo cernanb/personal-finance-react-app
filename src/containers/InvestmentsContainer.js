@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import Account from '../components/Account'
 import uuid from 'uuid/v4'
 
-class AssetsContainer extends Component {
-  renderAssets() {
-    return this.props.assets.map(asset => (
+class InvestmentsContainer extends Component {
+  renderInvestments() {
+    return this.props.investments.map(asset => (
       <Account key={uuid()} account={asset} />
     ))
   }
@@ -12,11 +12,11 @@ class AssetsContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Assets</h1>
-        {this.renderAssets()}
+        <h1>Investments</h1>
+        {this.renderInvestments()}
       </div>
     )
   }
 }
 
-export default AssetsContainer
+export default InvestmentsContainer
