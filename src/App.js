@@ -3,6 +3,10 @@ import logo from './logo.svg'
 import './App.css'
 
 import AssetsContainer from './containers/AssetsContainer'
+import LiabilitiesContainer from './containers/LiabilitiesContainer'
+import InvestmentsContainer from './containers/InvestmentsContainer'
+
+import Navbar from './components/Navbar'
 
 const user = {
   name: 'Cernan Bernardo',
@@ -20,7 +24,7 @@ const user = {
       accountNum: '878989',
       type: 'asset',
       accountType: 'Bank Savings',
-      balance: 3000,
+      balance: 5000,
     },
     {
       financialInst: 'Capital One',
@@ -51,16 +55,19 @@ class App extends Component {
 
   render() {
     const { accounts } = this.state.user
-    const assets = accounts.filter(account => account.type == 'asset')
+    const assets = accounts.filter(account => account.type === 'asset')
+    const liabilities = accounts.filter(account => account.type === 'liability')
+    const investments = accounts.filter(
+      account => account.type === 'investment'
+    )
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+      <div id="main">
+        <Navbar />
         <div className="App-intro">
           Hello {this.state.user.name}, this is your dashboard.
           <AssetsContainer assets={assets} />
+          <LiabilitiesContainer liabilities={liabilities} />
+          <InvestmentsContainer investments={investments} />
         </div>
       </div>
     )
@@ -70,6 +77,5 @@ class App extends Component {
 export default App
 
 {
-  /* <LiabilitiesContainer />
-<InvestmentsContainer /> */
+  /*  */
 }
