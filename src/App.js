@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import AssetsContainer from './containers/AssetsContainer'
 import LiabilitiesContainer from './containers/LiabilitiesContainer'
@@ -67,9 +67,18 @@ class App extends Component {
           <Navbar />
           <div className="App-intro">
             Hello {this.state.user.name}, this is your dashboard.
-            <AssetsContainer assets={assets} />
-            <LiabilitiesContainer liabilities={liabilities} />
-            <InvestmentsContainer investments={investments} />
+            <Route
+              path="/assets"
+              render={() => <AssetsContainer assets={assets} />}
+            />
+            <Route
+              path="/liabilities"
+              render={() => <LiabilitiesContainer liabilities={liabilities} />}
+            />
+            <Route
+              path="/investments"
+              render={() => <InvestmentsContainer investments={investments} />}
+            />
           </div>
         </div>
       </Router>
